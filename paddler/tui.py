@@ -33,7 +33,6 @@ input_field = TextArea(
     # completer=completion,
     complete_while_typing=True
 )
-input_field.accept_handler = lambda _: None
 
 placeholder_text = "Nothing here yet. Type some commands and we'll see."
 logs_placeholder = Window(content=FormattedTextControl(

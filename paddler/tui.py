@@ -69,3 +69,8 @@ app: Application = Application(layout, full_screen=True, style=style,
 def kb_exit_(_):
     """Press Ctrl-Q, Ctrl-D, or Ctrl-C to exit."""
     app.exit()
+
+
+@key_bindings.add('c-i')
+def kb_ipdb_(_):
+    breakpoint()

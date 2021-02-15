@@ -1,11 +1,10 @@
 from prompt_toolkit.widgets import TextArea, HorizontalLine
+from prompt_toolkit.widgets import Label
 from prompt_toolkit.layout.menus import CompletionsMenu
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.styles import Style
-from prompt_toolkit.layout import Layout, VerticalAlign, ScrollablePane
-from prompt_toolkit.layout.containers import (FloatContainer, HSplit, Window,
-                                              Float)
-from prompt_toolkit.layout.controls import FormattedTextControl
+from prompt_toolkit.layout import Layout, ScrollablePane
+from prompt_toolkit.layout.containers import (FloatContainer, HSplit, Float)
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit import Application
 
@@ -35,9 +34,10 @@ input_field = TextArea(
 )
 
 placeholder_text = "Nothing here yet. Type some commands and we'll see."
-logs_placeholder = Window(content=FormattedTextControl(
+logs_placeholder = Label(
     FormattedText([("class:placeholder", placeholder_text)])
-))
+)
+
 log_items = HSplit([logs_placeholder])
 log_pane = ScrollablePane(log_items)
 

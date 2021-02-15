@@ -46,7 +46,7 @@ root_container = FloatContainer(
         HorizontalLine(),
         history_field,
         input_field
-    ], align=VerticalAlign.BOTTOM),
+    ]),
     floats=[
         Float(
             xcursor=True,

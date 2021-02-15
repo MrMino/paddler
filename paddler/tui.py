@@ -2,7 +2,7 @@ from prompt_toolkit.widgets import TextArea, HorizontalLine
 from prompt_toolkit.layout.menus import CompletionsMenu
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.styles import Style
-from prompt_toolkit.layout import Layout, VerticalAlign
+from prompt_toolkit.layout import Layout, VerticalAlign, ScrollablePane
 from prompt_toolkit.layout.containers import (FloatContainer, HSplit, Window,
                                               Float)
 from prompt_toolkit.layout.controls import FormattedTextControl
@@ -38,7 +38,7 @@ placeholder_text = "Nothing here yet. Type some commands and we'll see."
 logs_placeholder = Window(content=FormattedTextControl(
     FormattedText([("class:placeholder", placeholder_text)])
 ))
-log_items = HSplit([logs_placeholder])
+log_items = ScrollablePane(HSplit([logs_placeholder]))
 
 root_container = FloatContainer(
     content=HSplit([

@@ -38,11 +38,12 @@ placeholder_text = "Nothing here yet. Type some commands and we'll see."
 logs_placeholder = Window(content=FormattedTextControl(
     FormattedText([("class:placeholder", placeholder_text)])
 ))
-log_items = ScrollablePane(HSplit([logs_placeholder]))
+log_items = HSplit([logs_placeholder])
+log_pane = ScrollablePane(log_items)
 
 root_container = FloatContainer(
     content=HSplit([
-        log_items,
+        log_pane,
         HorizontalLine(),
         history_field,
         input_field

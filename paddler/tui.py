@@ -7,6 +7,10 @@ from prompt_toolkit.layout import Layout, ScrollablePane
 from prompt_toolkit.layout.containers import (FloatContainer, HSplit, Float)
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit import Application
+from prompt_toolkit.widgets import Box, Shadow, Frame
+from prompt_toolkit.layout import ConditionalContainer
+from prompt_toolkit.filters import Condition
+
 
 style = Style(
     [
@@ -41,6 +45,12 @@ logs_placeholder = Label(
 log_items = HSplit([logs_placeholder])
 log_pane = ScrollablePane(log_items)
 
+show_kb_help = False
+help_window = Float(
+    ConditionalContainer(Box(Shadow(Frame(Label(""), "Key bindings:"))),
+                         filter=Condition(lambda: show_kb_help))
+)
+
 root_container = FloatContainer(
     content=HSplit([
         log_pane,
@@ -53,7 +63,8 @@ root_container = FloatContainer(
             xcursor=True,
             ycursor=True,
             content=CompletionsMenu(max_height=16, scroll_offset=1),
-        )
+        ),
+        help_window,
     ],
 )
 
@@ -74,3 +85,10 @@ def kb_exit_(_):
 @key_bindings.add('c-i')
 def kb_ipdb_(_):
     breakpoint()
+
+
+@key_bindings.add('?')
+def kb_bindings_help_(_):
+    """Show this window"""
+    global show_kb_help
+    show_kb_help = not show_kb_help

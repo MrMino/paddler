@@ -19,7 +19,7 @@ style = Style(
         ("input-field", "bg:#000000 #ffffff"),
         ("line", "#004400"),
         ("prompt", "fg:orange"),
-        ("placeholder", "fg: grey"),
+        ("placeholder", "grey"),
     ]
 )
 
@@ -37,7 +37,11 @@ input_field = TextArea(
     complete_while_typing=True
 )
 
-placeholder_text = "Nothing here yet. Type some commands and we'll see."
+placeholder_text = (
+    "Nothing here yet:\n"
+    " - Type \"help\" to see available commands.\n"
+    " - Press \"?\" for the list of keybindings."
+)
 logs_placeholder = Label(
     FormattedText([("class:placeholder", placeholder_text)])
 )

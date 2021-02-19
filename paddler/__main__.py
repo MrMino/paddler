@@ -1,5 +1,6 @@
 from .tui import app, input_field, history_field
-from .console import Console, TUIInputField, TUIOutputField
+from .tui.controls import TUIInputField, TUIOutputField
+from .console import Console
 
 
 Console(

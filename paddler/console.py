@@ -5,7 +5,6 @@ from queue import Queue
 from .tui import TextArea
 from typing import Callable, Any
 
-# TODO: typehints
 
 class InputField(metaclass=ABCMeta):
     """Abstract base for an input field of a console."""
@@ -29,7 +28,7 @@ class TUIInputField(InputField):
         self._text_area = text_area
         self._text_area.accept_handler = self._accept_input
 
-    def _accept_input(self, buff):
+    def _accept_input(self, _):
         text = self._text_area.text
         self.accept_callback(text)
 
@@ -50,7 +49,7 @@ class Console:
     def __init__(self,
                  input_widget: InputField,
                  output_widget: OutputField,
-                 *, echo=True):
+                 *, echo: bool = True):
         self._input = input_widget
         self._output = output_widget
 
@@ -58,12 +57,12 @@ class Console:
         self._input.accept_callback = self._input_handler  # type: ignore
 
         self.echo = echo
-        self.commands = Queue()
+        self.commands: Queue[str] = Queue()
 
     def _input_handler(self, command: str):
         self.commands.put(command)
         if self.echo:
             self.print(command)
 
-    def print(self, text):
+    def print(self, text: str) -> None:
         self._output.write_line(text)

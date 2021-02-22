@@ -27,6 +27,7 @@ WidgetT = TypeVar('WidgetT')
 # bound callbacks call control classes fields. Make the high-level classes
 # substitute these callbacks with their versions.
 
+# TODO: does this have to be a generic?
 class TaskCard(Generic[WidgetT], metaclass=ABCMeta):
     """Abstract base for an expandable container with task details."""
     widget: WidgetT
@@ -41,6 +42,8 @@ class TaskCard(Generic[WidgetT], metaclass=ABCMeta):
         """Return True if the card is collapsed, False otherwise."""
 
 
+# TODO: maybe use something from prompt_toolkit instead of a generic? HSplit
+# has to have some kind of typehint for the children list.
 class AgendaPane(Generic[WidgetT], metaclass=ABCMeta):
     """Abstract base for a pane with list of tasks."""
 

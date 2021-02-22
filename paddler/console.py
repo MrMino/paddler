@@ -1,3 +1,8 @@
+"""
+High level classes that handle the console window, i.e. the text areas at the
+bottom of the screen.
+"""
+
 from abc import ABCMeta, abstractmethod
 from queue import Queue
 

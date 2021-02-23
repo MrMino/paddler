@@ -82,13 +82,19 @@ app: Application = Application(layout, full_screen=True, style=style,
 @key_bindings.add('c-d')
 @key_bindings.add('c-c')
 def kb_exit_(_):
-    """Press Ctrl-Q, Ctrl-D, or Ctrl-C to exit."""
+    """Exit"""
     app.exit()
 
 
 @key_bindings.add('c-i')
 def kb_ipdb_(_):
+    """Run debugger"""
     breakpoint()
+
+
+@key_bindings.add('c-t')
+def kb_test_(_):
+    """Test method"""
 
 
 @key_bindings.add('?')

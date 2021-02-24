@@ -2,7 +2,8 @@
 Higher-level control classes for TUI components.
 """
 from ..console import InputField, OutputField
-from . import TextArea
+from ..agenda import AgendaPane
+from . import TextArea, ScrollablePane
 
 from typing import Callable, Any
 
@@ -31,3 +32,8 @@ class TUIOutputField(OutputField):
         from prompt_toolkit.document import Document
         new_text = self._text_area.text + '\n' + text
         self._text_area.document = Document(new_text, len(new_text))
+
+
+class TUIAgendaPane(AgendaPane):
+    def __init__(self, agenda_pane: ScrollablePane):
+        pass

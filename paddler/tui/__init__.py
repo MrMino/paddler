@@ -50,9 +50,9 @@ log_items = HSplit([logs_placeholder])
 log_pane = ScrollablePane(log_items)
 
 show_kb_help = False
-help_window = Float(
-    ConditionalContainer(Box(Shadow(Frame(Label(""), "Key bindings:"))),
-                         filter=Condition(lambda: show_kb_help))
+bindings_help = ConditionalContainer(
+    Box(Shadow(Frame(Label(""), "Key bindings:"))),
+    filter=Condition(lambda: show_kb_help)
 )
 
 root_container = FloatContainer(
@@ -68,7 +68,7 @@ root_container = FloatContainer(
             ycursor=True,
             content=CompletionsMenu(max_height=16, scroll_offset=1),
         ),
-        help_window,
+        Float(bindings_help),
     ],
 )
 

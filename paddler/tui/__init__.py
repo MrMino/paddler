@@ -42,12 +42,12 @@ placeholder_text = (
     " - Type \"help\" to see available commands.\n"
     " - Press \"?\" for the list of keybindings."
 )
-logs_placeholder = Label(
+entry_placeholder = Label(
     FormattedText([("class:placeholder", placeholder_text)])
 )
 
-log_items = HSplit([logs_placeholder])
-log_pane = ScrollablePane(log_items)
+task_list = HSplit([entry_placeholder])
+agenda_pane = ScrollablePane(task_list)
 
 show_kb_help = False
 bindings_help = ConditionalContainer(
@@ -57,7 +57,7 @@ bindings_help = ConditionalContainer(
 
 root_container = FloatContainer(
     content=HSplit([
-        log_pane,
+        agenda_pane,
         HorizontalLine(),
         history_field,
         input_field
